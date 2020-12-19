@@ -14,6 +14,7 @@
 
 int			ft_printf(const char *toprint, ...)
 {
+	int					len;
 	va_list			args;
 	t_print			*print;
 	t_parg			**parg;
@@ -22,7 +23,8 @@ int			ft_printf(const char *toprint, ...)
 	parg = parg_init(print->nb_conv);
 	va_start(args, toprint);
 	parser(print, parg, args);
+	len = print->len;
 	pf_free_all(print, parg);
 	va_end(args);
-	return (print->len);
+	return (len);
 }

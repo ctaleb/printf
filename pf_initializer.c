@@ -21,7 +21,6 @@ t_print			*print_init(const char *str)
 	p_print = ft_calloc(1, sizeof(t_print));
 	p_print->nb_conv = c_count(str);
 	p_print->basestr = ft_strdup(str);
-
 	return (p_print);
 }
 
