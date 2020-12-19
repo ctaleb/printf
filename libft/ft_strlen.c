@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 11:19:37 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/19 17:48:21 by ctaleb           ###   ########lyon.fr   */
+/*   Created: 2020/11/23 17:27:45 by ctaleb            #+#    #+#             */
+/*   Updated: 2020/11/23 17:38:32 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int			ft_printf(const char *toprint, ...)
+size_t	ft_strlen(const char *str)
 {
-	va_list			args;
-	t_print			*print;
-	t_parg			**parg;
+	size_t size;
 
-	print = print_init(toprint);
-	parg = parg_init(print->nb_conv);
-	va_start(args, toprint);
-	parser(print, parg, args);
-	pf_free_all(print, parg);
-	va_end(args);
-	return (print->len);
+	size = 0;
+	while (str[size])
+		size++;
+	return (size);
 }

@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 11:19:37 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/19 17:48:21 by ctaleb           ###   ########lyon.fr   */
+/*   Created: 2020/11/24 13:12:43 by ctaleb            #+#    #+#             */
+/*   Updated: 2020/11/26 15:59:54 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int			ft_printf(const char *toprint, ...)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dst_size)
 {
-	va_list			args;
-	t_print			*print;
-	t_parg			**parg;
+	unsigned int	i;
+	unsigned int	src_size;
 
-	print = print_init(toprint);
-	parg = parg_init(print->nb_conv);
-	va_start(args, toprint);
-	parser(print, parg, args);
-	pf_free_all(print, parg);
-	va_end(args);
-	return (print->len);
+	if (!dst || !src)
+		return (0);
+	i = 0;
+	src_size = ft_strlen((char *)src);
+	if (dst_size == 0)
+		return (src_size);
+	while (src[i] && i < dst_size - 1)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	if (dst_size != 0)
+		dst[i] = '\0';
+	return (src_size);
 }

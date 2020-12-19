@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 11:19:37 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/19 17:48:21 by ctaleb           ###   ########lyon.fr   */
+/*   Created: 2020/11/23 18:09:49 by ctaleb            #+#    #+#             */
+/*   Updated: 2020/11/28 16:55:05 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int			ft_printf(const char *toprint, ...)
+int	ft_isalnum(int c)
 {
-	va_list			args;
-	t_print			*print;
-	t_parg			**parg;
-
-	print = print_init(toprint);
-	parg = parg_init(print->nb_conv);
-	va_start(args, toprint);
-	parser(print, parg, args);
-	pf_free_all(print, parg);
-	va_end(args);
-	return (print->len);
+	if (ft_isdigit(c) || ft_isalpha(c))
+		return (1);
+	return (0);
 }

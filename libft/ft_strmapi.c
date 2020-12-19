@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 11:19:37 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/19 17:48:21 by ctaleb           ###   ########lyon.fr   */
+/*   Created: 2020/11/26 14:27:08 by ctaleb            #+#    #+#             */
+/*   Updated: 2020/11/27 16:25:53 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int			ft_printf(const char *toprint, ...)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	va_list			args;
-	t_print			*print;
-	t_parg			**parg;
+	unsigned int	i;
+	char			*str;
 
-	print = print_init(toprint);
-	parg = parg_init(print->nb_conv);
-	va_start(args, toprint);
-	parser(print, parg, args);
-	pf_free_all(print, parg);
-	va_end(args);
-	return (print->len);
+	if (!s || !f)
+		return (NULL);
+	if (!(str = ft_calloc(ft_strlen(s) + 1, sizeof(char))))
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		str[i] = (*f)(i, s[i]);
+		i++;
+	}
+	return (str);
 }

@@ -5,31 +5,76 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/10 11:22:07 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/10 13:58:01 by ctaleb           ###   ########lyon.fr   */
+/*   Created: 2020/12/19 11:38:38 by ctaleb            #+#    #+#             */
+/*   Updated: 2020/12/19 16:44:42 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+# include "libft/libft.h"
 # include <stdarg.h>
-# include <stdio.h>
 
-typedef struct	s_printdb
+typedef struct	s_print
 {
-		int		len;
-		char	*str;
+	int			len;
+	char		*basestr;
+	int			nb_conv;
+}				t_print;
 
-		int		nb_conv;
-		char	**c_type;
-		int		*f_len;
-		char	**f_type;
-}				t_printdb;
+typedef struct	s_parg
+{
+	char		ctype;
+	char		*conv;
+	int			fhtag;
+	int			fzero;
+	int			fminus;
+	int			fplus;
+	int			fspace;
+	int			fquote;
+	int			fwidth;
+	int			fdot;
+	int			fprec;
+	int			mh;
+	int			ml;
+}				t_parg;
 
 int				ft_printf(const char *toprint, ...);
+t_print			*print_init(const char *str);
+t_parg			**parg_init(int ccount);
 
-int				parser(const char *toprint, t_printdb printdb);
+int				parser(t_print *print, t_parg **parg, va_list args);
+int				c_count(const char *str);
 
-int				printer(char *str);
+int				isflag(char c);
+int				isconv(char c);
+int				ismod(char c);
+int				isnum(char c);
+
+int				iassign(const char *str, va_list args);
+void			fassign(char c, t_parg *parg);
+void			massign(char c, t_parg *parg);
+
+void			perconv(t_print *print);
+void			cconv(t_print *print, t_parg *parg, va_list args);
+void			nconv(int len, t_parg *parg, va_list args);
+void			idconv(t_print *print, t_parg *parg, va_list args);
+void			uconv(t_print *print, t_parg *parg, va_list args);
+void			hexconv(t_print *print, t_parg *parg, va_list args);
+void			pconv(t_print *print, t_parg *parg, va_list args);
+void			sconv(t_print *print, t_parg *parg, va_list args);
+
+void			adjsign(t_parg *parg);
+void			adjwidth(t_parg *parg);
+void			adjprec(t_parg *parg);
+void			adjhtag(t_parg *parg);
+
+void			sjoiner(char **s1, char *s2, int m);
+void			cjoiner(char **s1, char c, int m);
+void			njoiner(char **s1, char *s2);
+
+void			printer(char *str, int len);
+
+void			pf_free_all(t_print *print, t_parg **parg);
 
 #endif

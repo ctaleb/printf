@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 11:19:37 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/19 17:48:21 by ctaleb           ###   ########lyon.fr   */
+/*   Created: 2020/11/27 12:33:04 by ctaleb            #+#    #+#             */
+/*   Updated: 2020/11/27 16:32:44 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int			ft_printf(const char *toprint, ...)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	va_list			args;
-	t_print			*print;
-	t_parg			**parg;
+	t_list	*newlst;
+	t_list	*new;
 
-	print = print_init(toprint);
-	parg = parg_init(print->nb_conv);
-	va_start(args, toprint);
-	parser(print, parg, args);
-	pf_free_all(print, parg);
-	va_end(args);
-	return (print->len);
+	newlst = NULL;
+	while (lst)
+	{
+		new = NULL;
+		if (!(new = ft_lstnew((*f)(lst->content))))
+		{
+			ft_lstclear(&newlst, (*del));
+			return (NULL);
+		}
+		ft_lstadd_back(&newlst, new);
+		lst = lst->next;
+	}
+	return (newlst);
 }
