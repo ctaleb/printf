@@ -26,25 +26,34 @@ void	cconv(t_print *print, t_parg *parg, va_list args)
 	char	c;
 
 	c = (char)va_arg(args, int);
-	free(parg->conv);
-	parg->conv = ft_calloc(1, sizeof(char));
-	if (c != 0)
-		cjoiner(&parg->conv, c, 1);
-	adjwidth(parg);
-	printer(parg->conv, 1);
-	print->len += (int)ft_strlen(parg->conv);
+	cprinter(print, parg, c);
 }
 
 void	sconv(t_print *print, t_parg *parg, va_list args)
 {
 	char	*str;
+	int		len;
 
 	str = (char *)va_arg(args, char *);
 	free(parg->conv);
-	parg->conv  = ft_calloc(1, sizeof(char));
-	if (ft_strlen(str) != 0)
-		sjoiner(&parg->conv, str, 1);
-	adjwidth(parg);
-	printer(parg->conv, 1);
-	print->len += (int)ft_strlen(parg->conv);
+	if (str == NULL)
+	{
+		if ((parg->fdot && parg->fprec >= 6) || !parg->fdot)
+			len = 7;
+		else
+			len = 1;
+		parg->conv = ft_calloc(len, sizeof(char));
+		if (parg->fprec >= 6 || !parg->fdot)
+			ft_strlcpy(parg->conv, "(null)", len);		
+	}
+	else
+	{
+		if (parg->fdot && parg->fprec < (int)ft_strlen(str))
+			len = parg->fprec + 1;
+		else
+			len = ft_strlen(str) + 1;
+		parg->conv = ft_calloc(len, sizeof(char));
+		ft_strlcpy(parg->conv, str, len);
+	}
+	sprinter(print, parg);
 }

@@ -74,6 +74,8 @@ void			cjoiner(char **s1, char c, int m);
 void			njoiner(char **s1, char *s2);
 
 void			printer(char *str, int len);
+void			cprinter(t_print *print, t_parg *parg, char c);
+void			sprinter(t_print *print, t_parg *parg);
 
 void			pf_free_all(t_print *print, t_parg **parg);
 
