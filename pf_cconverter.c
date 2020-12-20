@@ -12,13 +12,16 @@
 
 #include "ft_printf.h"
 
-void	perconv(t_print *print)
+void	perconv(t_print *print, t_parg *parg)
 {
-	char c;
+	char	c;
+	char	cwidth;
 
 	c = '%';
-	ft_putchar_fd(c, 1);
-	print->len += 1;
+	cwidth = ' ';
+	if (parg->fzero && !parg->fminus && parg->fwidth >= 0)
+		cwidth = '0';
+	perprinter(print, parg, c, cwidth);
 }
 
 void	cconv(t_print *print, t_parg *parg, va_list args)
@@ -43,8 +46,7 @@ void	sconv(t_print *print, t_parg *parg, va_list args)
 		else
 			len = 7;
 		parg->conv = ft_calloc(len, sizeof(char));
-		//if (parg->fprec >= 6 || !parg->fdot)
-			ft_strlcpy(parg->conv, "(null)", len);		
+		ft_strlcpy(parg->conv, "(null)", len);		
 	}
 	else
 	{

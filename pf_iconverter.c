@@ -16,17 +16,12 @@ void	idconv(t_print *print, t_parg *parg, va_list args)
 {
 	long long int	nb;
 
-	if (parg->mh == 1)
-		nb = (short)va_arg(args, int);
-	else if (parg->mh >= 2)
-		nb = (signed char)va_arg(args, int);
-	else
-		nb = (int)va_arg(args, int);
+	nb = idextract(parg, args);
 	free(parg->conv);
 	parg->conv = ft_itoa(nb);
 	if (parg->fdot)
 		adjprec(parg);
-	if (nb > 0)
+	if (nb >= 0)
 		adjsign(parg);
 	adjwidth(parg);
 	printer(parg->conv, ft_strlen(parg->conv));
@@ -47,7 +42,7 @@ void	uconv(t_print *print, t_parg *parg, va_list args)
 	parg->conv = ft_utoa(nb);
 	if (parg->fdot)
 		adjprec(parg);
-	if (nb > 0)
+	if (nb >= 0)
 		adjsign(parg);
 	adjwidth(parg);
 	printer(parg->conv, ft_strlen(parg->conv));
@@ -74,8 +69,10 @@ void	hexconv(t_print *print, t_parg *parg, va_list args)
 	if (nb > 0)
 		adjsign(parg);
 	if (parg->fhtag && nb)
-		adjhtag(parg);
+		adjwsize(parg);
 	adjwidth(parg);
+	if (parg->fhtag && nb)
+		adjhtag(parg);
 	printer(parg->conv, ft_strlen(parg->conv));
 	print->len += (int)ft_strlen(parg->conv);
 }

@@ -55,7 +55,7 @@ static void	conv_varg(t_print *print, t_parg *parg, va_list args)
 	else if (parg->ctype == 'n')
 		nconv(print->len, parg, args);
 	else if (parg->ctype == '%')
-		perconv(print);
+		perconv(print, parg);
 	else
 		return ;
 }

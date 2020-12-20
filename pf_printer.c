@@ -24,6 +24,35 @@ void	printer(char *str, int len)
 	}
 }
 
+void	perprinter(t_print *print, t_parg *parg, char c, char cwidth)
+{
+	char	*width;
+	int		adj;
+
+	if ((adj = ft_abs(parg->fwidth) - 1) > 0)
+	{
+		width = ft_calloc(adj + 1, sizeof(char));
+		memset(width, cwidth, adj);
+		if (parg->fminus || parg->fwidth < 0)
+		{
+			ft_putchar_fd(c, 1);
+			printer(width, adj);
+		}
+		else if (parg->fwidth)
+		{
+			printer(width, adj);
+			ft_putchar_fd(c, 1);
+		}
+		free(width);
+		print->len += adj + 1;
+	}
+	else
+	{
+		ft_putchar_fd(c, 1);
+		print->len += 1;
+	}
+}
+
 void	cprinter(t_print *print, t_parg *parg, char c)
 {
 	char	*width;

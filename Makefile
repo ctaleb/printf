@@ -27,6 +27,7 @@ SRCS = ft_printf.c\
 			pf_parser.c\
 			pf_cchecker.c\
 			pf_aassigner.c\
+			pf_extractor.c\
 			pf_iconverter.c\
 			pf_cconverter.c\
 			pf_memconverter.c\

@@ -55,7 +55,10 @@ int				iassign(const char *str, va_list args);
 void			fassign(char c, t_parg *parg);
 void			massign(char c, t_parg *parg);
 
-void			perconv(t_print *print);
+long long		idextract(t_parg *parg, va_list args);
+unsigned long long  uxtract(t_parg *parg, va_list args)
+
+void			perconv(t_print *print, t_parg *parg);
 void			cconv(t_print *print, t_parg *parg, va_list args);
 void			nconv(int len, t_parg *parg, va_list args);
 void			idconv(t_print *print, t_parg *parg, va_list args);
@@ -68,12 +71,14 @@ void			adjsign(t_parg *parg);
 void			adjwidth(t_parg *parg);
 void			adjprec(t_parg *parg);
 void			adjhtag(t_parg *parg);
+void			adjwsize(t_parg *parg);
 
 void			sjoiner(char **s1, char *s2, int m);
 void			cjoiner(char **s1, char c, int m);
 void			njoiner(char **s1, char *s2);
 
 void			printer(char *str, int len);
+void			perprinter(t_print *print, t_parg *parg, char c, char cwidth);
 void			cprinter(t_print *print, t_parg *parg, char c);
 void			sprinter(t_print *print, t_parg *parg);
 

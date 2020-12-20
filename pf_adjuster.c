@@ -78,13 +78,31 @@ void	adjhtag(t_parg *parg)
 	char	*htag;
 	int		adj;
 
-	adj = (int)ft_strlen(parg->conv) + 3;
-	htag = ft_calloc(adj, sizeof(char));
-	htag[0] += '0';
-	htag[1] += 'x';
-	ft_strlcat(htag, parg->conv, adj);
-	if (parg->ctype == 'X')
-		htag[1] -= ' ';
-	free(parg->conv);
-	parg->conv = htag;
+	if (parg->ctype == 'x')
+		njoiner(&parg->conv, "0x");
+	else if (parg->ctype == 'X')
+		njoiner(&parg->conv, "0X");
+	else
+	{
+		adj = (int)ft_strlen(parg->conv) + 3;
+		htag = ft_calloc(adj, sizeof(char));
+		htag[0] += '0';
+		htag[1] += 'x';
+
+		ft_strlcat(htag, parg->conv, adj);
+		if (parg->ctype == 'X')
+			htag[1] -= ' ';
+		free(parg->conv);
+		parg->conv = htag;
+	}
+}
+
+void	adjwsize(t_parg *parg)
+{
+	if (parg->fwidth >= 2)
+		parg->fwidth -= 2;
+	else if (parg->fwidth <= -2)
+		parg->fwidth += 2;
+	if (parg->fwidth < 2 && parg->fwidth > -2)
+		parg->fwidth = 0;
 }
