@@ -56,7 +56,7 @@ void			fassign(char c, t_parg *parg);
 void			massign(char c, t_parg *parg);
 
 long long		idextract(t_parg *parg, va_list args);
-unsigned long long  uxtract(t_parg *parg, va_list args)
+unsigned long long  uxtract(t_parg *parg, va_list args);
 
 void			perconv(t_print *print, t_parg *parg);
 void			cconv(t_print *print, t_parg *parg, va_list args);

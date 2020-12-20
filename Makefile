@@ -65,6 +65,8 @@ $(NAME): $(OBJS) $(LIB_PATH)$(LIB)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 	@printf "                 $(GREEN)[lib done]$(DEFAULT)                     \n\n"
 
+bonus:
+
 $(LIB_PATH)$(LIB):
 	@make -C $(LIB_PATH)
 

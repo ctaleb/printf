@@ -83,5 +83,7 @@ size_t				ft_numlen(const char *str);
 int					ft_abs(int nb);
 char				*ft_utoa(unsigned int n);
 char				*ft_utoa_base(unsigned long long n, char *base);
+char				*ft_ltoa(long long n);
+char				*ft_lutoa(unsigned long long n);
 
 #endif

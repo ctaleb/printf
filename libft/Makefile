@@ -74,7 +74,9 @@ SRCS = ft_memset.c\
 		ft_abs.c\
 		ft_utoa.c\
 		ft_utoa_base.c\
-		ft_ishex.c
+		ft_ishex.c\
+		ft_ltoa.c\
+		ft_lutoa.c
 
 OBJS = $(SRCS:.c=.o)
 INCS = libft.h

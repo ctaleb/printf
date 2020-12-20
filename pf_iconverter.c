@@ -14,11 +14,14 @@
 
 void	idconv(t_print *print, t_parg *parg, va_list args)
 {
-	long long int	nb;
+	long long	nb;
 
 	nb = idextract(parg, args);
 	free(parg->conv);
-	parg->conv = ft_itoa(nb);
+	if (parg->ml)
+		parg->conv = ft_ltoa(nb);
+	else
+		parg->conv = ft_itoa(nb);
 	if (parg->fdot)
 		adjprec(parg);
 	if (nb >= 0)
@@ -30,20 +33,17 @@ void	idconv(t_print *print, t_parg *parg, va_list args)
 
 void	uconv(t_print *print, t_parg *parg, va_list args)
 {
-	unsigned long long int	nb;
+	unsigned long long nb;
 
-	if (parg->mh == 1)
-		nb = (unsigned short)va_arg(args, unsigned int);
-	else if (parg->mh >= 2)
-		nb = (unsigned char)va_arg(args, unsigned int);
-	else
-	nb = (unsigned int)va_arg(args, unsigned int);
+	nb = uxtract(parg, args);
 	free(parg->conv);
-	parg->conv = ft_utoa(nb);
+	if (parg->ml)
+		parg->conv = ft_lutoa(nb);
+	else
+		parg->conv = ft_utoa(nb);
 	if (parg->fdot)
 		adjprec(parg);
-	if (nb >= 0)
-		adjsign(parg);
+	adjsign(parg);
 	adjwidth(parg);
 	printer(parg->conv, ft_strlen(parg->conv));
 	print->len += (int)ft_strlen(parg->conv);
@@ -53,12 +53,7 @@ void	hexconv(t_print *print, t_parg *parg, va_list args)
 {
 	unsigned long long int	nb;
 
-	if (parg->mh == 1)
-		nb = (unsigned short)va_arg(args, unsigned int);
-	else if (parg->mh >= 2)
-		nb = (unsigned char)va_arg(args, unsigned int);
-	else
-	nb = (unsigned int)va_arg(args, unsigned int);
+	nb = uxtract(parg, args);
 	free(parg->conv);
 	if (parg->ctype == 'x')
 		parg->conv = ft_utoa_base(nb, "0123456789abcdef");

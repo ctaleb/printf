@@ -14,9 +14,12 @@
 
 void	nconv(int len, t_parg *parg, va_list args)
 {
+	//make fct for h & l
 	int			*n;
 	short		*s;
 	signed char	*c;
+	long		*l;
+	long long	*ll;
 
 	if (parg->mh == 1)
 	{
@@ -27,6 +30,16 @@ void	nconv(int len, t_parg *parg, va_list args)
 	{
 		c = (signed char *) va_arg(args, int *);
 		*c = len;
+	}
+	else if (parg->ml == 1)
+	{
+		l = (long *) va_arg(args, int *);
+		*l = len;
+	}
+	else if (parg->ml >= 2)
+	{
+		ll = (long long *) va_arg(args, int *);
+		*ll = len;
 	}
 	else
 	{
