@@ -26,6 +26,11 @@ void	adjwidth(t_parg *parg)
 	int		adj;
 	int		m;
 
+	if (parg->fprec < 0)
+	{
+		parg->fprec = 0;
+		parg->fdot = 0;
+	}
 	if ((adj = ft_abs(parg->fwidth) - (int)ft_strlen(parg->conv)) > 0)
 	{
 		width = ft_calloc(adj + 1, sizeof(char));
@@ -33,7 +38,7 @@ void	adjwidth(t_parg *parg)
 		m = (parg->fwidth >= 0) ? (2) : (1);
 		if (parg->fminus)
 			sjoiner(&parg->conv, width, 1);
-		else if (parg->fzero && !parg->fdot)
+		else if (parg->fzero && parg->fwidth >= 0 && !parg->fprec && !parg->fdot)
 		{
 			memset(width, '0', adj);
 			njoiner(&parg->conv, width);
@@ -49,7 +54,7 @@ void	adjprec(t_parg *parg)
 	char	*prec;
 	int		adj;
 
-	if (parg->fprec <= 0)
+	if (parg->fprec == 0)
 	{
 		if (ft_strlen(parg->conv) == 1 && parg->conv[0] == '0'
 				&& parg->ctype != 'p')
@@ -59,7 +64,7 @@ void	adjprec(t_parg *parg)
 		}
 		return ;
 	}
-	if ((adj = parg->fprec - (int)ft_numlen(parg->conv)) > 0)
+	else if ((adj = parg->fprec - (int)ft_numlen(parg->conv)) > 0)
 	{
 		prec = ft_calloc(adj + 1, sizeof(char));
 		memset(prec, '0', adj);

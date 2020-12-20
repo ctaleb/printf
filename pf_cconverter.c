@@ -38,17 +38,17 @@ void	sconv(t_print *print, t_parg *parg, va_list args)
 	free(parg->conv);
 	if (str == NULL)
 	{
-		if ((parg->fdot && parg->fprec >= 6) || !parg->fdot)
-			len = 7;
+		if (parg->fdot && parg->fprec >= 0)
+			len = parg->fprec + 1;
 		else
-			len = 1;
+			len = 7;
 		parg->conv = ft_calloc(len, sizeof(char));
-		if (parg->fprec >= 6 || !parg->fdot)
+		//if (parg->fprec >= 6 || !parg->fdot)
 			ft_strlcpy(parg->conv, "(null)", len);		
 	}
 	else
 	{
-		if (parg->fdot && parg->fprec < (int)ft_strlen(str))
+		if (parg->fdot && parg->fprec < (int)ft_strlen(str) && parg->fprec >= 0)
 			len = parg->fprec + 1;
 		else
 			len = ft_strlen(str) + 1;
