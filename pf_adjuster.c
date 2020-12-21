@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_adjuster.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 11:21:38 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/19 13:58:03 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 11:35:41 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,19 @@ void	adjwidth(t_parg *parg)
 		parg->fprec = 0;
 		parg->fdot = 0;
 	}
-	if ((adj = ft_abs(parg->fwidth) - (int)ft_strlen(parg->conv)) > 0)
+	if ((adj = ft_abs(parg->fwid) - (int)ft_strlen(parg->conv)) > 0)
 	{
 		width = ft_calloc(adj + 1, sizeof(char));
 		memset(width, ' ', adj);
-		m = (parg->fwidth >= 0) ? (2) : (1);
+		m = (parg->fwid >= 0) ? (2) : (1);
 		if (parg->fminus)
 			sjoiner(&parg->conv, width, 1);
-		else if (parg->fzero && parg->fwidth >= 0 && !parg->fprec && !parg->fdot)
+		else if (parg->fzero && parg->fwid >= 0 && !parg->fprec && !parg->fdot)
 		{
 			memset(width, '0', adj);
 			njoiner(&parg->conv, width);
 		}
-		else if (parg->fwidth)
+		else if (parg->fwid)
 			sjoiner(&parg->conv, width, m);
 		free(width);
 	}
@@ -88,7 +88,6 @@ void	adjhtag(t_parg *parg)
 		htag = ft_calloc(adj, sizeof(char));
 		htag[0] += '0';
 		htag[1] += 'x';
-
 		ft_strlcat(htag, parg->conv, adj);
 		if (parg->ctype == 'X')
 			htag[1] -= ' ';
@@ -99,10 +98,10 @@ void	adjhtag(t_parg *parg)
 
 void	adjwsize(t_parg *parg)
 {
-	if (parg->fwidth >= 2)
-		parg->fwidth -= 2;
-	else if (parg->fwidth <= -2)
-		parg->fwidth += 2;
-	if (parg->fwidth < 2 && parg->fwidth > -2)
-		parg->fwidth = 0;
+	if (parg->fwid >= 2)
+		parg->fwid -= 2;
+	else if (parg->fwid <= -2)
+		parg->fwid += 2;
+	if (parg->fwid < 2 && parg->fwid > -2)
+		parg->fwid = 0;
 }

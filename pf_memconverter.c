@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_memconverter.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 11:32:37 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/19 16:54:16 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 11:30:48 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,21 @@
 
 void	nconv(int len, t_parg *parg, va_list args)
 {
-	//make fct for h & l
 	int			*n;
+
+	if (parg->mh || parg->ml)
+	{
+		nmodconv(len, parg, args);
+	}
+	else
+	{
+		n = (int *)va_arg(args, int *);
+		*n = len;
+	}
+}
+
+void	nmodconv(int len, t_parg *parg, va_list args)
+{
 	short		*s;
 	signed char	*c;
 	long		*l;
@@ -28,23 +41,18 @@ void	nconv(int len, t_parg *parg, va_list args)
 	}
 	else if (parg->mh >= 2)
 	{
-		c = (signed char *) va_arg(args, int *);
+		c = (signed char *)va_arg(args, int *);
 		*c = len;
 	}
 	else if (parg->ml == 1)
 	{
-		l = (long *) va_arg(args, int *);
+		l = (long *)va_arg(args, int *);
 		*l = len;
 	}
 	else if (parg->ml >= 2)
 	{
-		ll = (long long *) va_arg(args, int *);
+		ll = (long long *)va_arg(args, int *);
 		*ll = len;
-	}
-	else
-	{
-		n = (int *)va_arg(args, int *);
-		*n = len;
 	}
 }
 

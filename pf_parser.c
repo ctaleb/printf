@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 12:04:27 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/19 17:28:24 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 11:35:46 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	conv_extract(const char *str, t_parg *parg, va_list args)
 	i = 1;
 	while (isflag(str[i]))
 		fassign(str[i++], parg);
-	parg->fwidth = iassign(&str[i], args);
+	parg->fwid = iassign(&str[i], args);
 	while (isnum(str[i]))
 		i++;
 	if (str[i] == '.')

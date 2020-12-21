@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   pf_extractor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 18:48:43 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/20 18:48:45 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 12:47:47 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-long long           idextract(t_parg *parg, va_list args)
+long long			idextract(t_parg *parg, va_list args)
 {
-	long long   nb;
+	long long	nb;
 
 	if (parg->mh == 1)
 		nb = (short)va_arg(args, int);
@@ -26,12 +26,13 @@ long long           idextract(t_parg *parg, va_list args)
 		nb = (long long)va_arg(args, int);
 	else
 		nb = (int)va_arg(args, int);
+	//printf("i=%ld", nb);
 	return (nb);
 }
 
-unsigned long long  uxtract(t_parg *parg, va_list args)
+unsigned long long	uxtract(t_parg *parg, va_list args)
 {
-	unsigned long long  nb;
+	unsigned long long	nb;
 
 	if (parg->mh == 1)
 		nb = (unsigned short)va_arg(args, int);

@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/19 11:40:32 by ctaleb            #+#    #+#              #
-#    Updated: 2020/12/21 10:57:57 by ctaleb           ###   ########lyon.fr    #
+#    Updated: 2020/12/21 12:45:21 by ctaleb           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra
-############# DON'T FORGET TO PUT BACK -Werror###############
+# -Werror
 RM = rm -f
 
 AR = ar

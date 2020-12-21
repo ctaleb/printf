@@ -6,7 +6,7 @@
 #    By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/28 15:12:07 by ctaleb            #+#    #+#              #
-#    Updated: 2020/12/19 11:18:50 by ctaleb           ###   ########lyon.fr    #
+#    Updated: 2020/12/21 11:50:28 by ctaleb           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,7 @@ SRCS = ft_memset.c\
 		ft_abs.c\
 		ft_utoa.c\
 		ft_utoa_base.c\
+		ft_lutoa_base.c\
 		ft_ishex.c\
 		ft_ltoa.c\
 		ft_lutoa.c

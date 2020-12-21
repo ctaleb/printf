@@ -6,7 +6,7 @@
 /*   By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 11:00:49 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/19 11:01:39 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 11:49:25 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static unsigned int	ft_nbrlen(unsigned long long nb, unsigned int blen)
 {
-	unsigned int size;
+	unsigned int	size;
 
 	size = 0;
 	if (nb == 0)
@@ -29,10 +29,10 @@ static unsigned int	ft_nbrlen(unsigned long long nb, unsigned int blen)
 
 char				*ft_utoa_base(unsigned long long n, char *base)
 {
-	unsigned int	size;
-	char			*nbr;
+	unsigned int		size;
+	char				*nbr;
 	unsigned long long	nb;
-	unsigned int	blen;
+	unsigned int		blen;
 
 	blen = ft_strlen(base);
 	size = ft_nbrlen(n, blen);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_printer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 11:35:58 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/19 16:26:33 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 11:35:57 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,21 @@ void	printer(char *str, int len)
 	}
 }
 
-void	perprinter(t_print *print, t_parg *parg, char c, char cwidth)
+void	perprinter(t_print *print, t_parg *parg, char c, char cw)
 {
 	char	*width;
 	int		adj;
 
-	if ((adj = ft_abs(parg->fwidth) - 1) > 0)
+	if ((adj = ft_abs(parg->fwid) - 1) > 0)
 	{
 		width = ft_calloc(adj + 1, sizeof(char));
-		memset(width, cwidth, adj);
-		if (parg->fminus || parg->fwidth < 0)
+		memset(width, cw, adj);
+		if (parg->fminus || parg->fwid < 0)
 		{
 			ft_putchar_fd(c, 1);
 			printer(width, adj);
 		}
-		else if (parg->fwidth)
+		else if (parg->fwid)
 		{
 			printer(width, adj);
 			ft_putchar_fd(c, 1);
@@ -58,16 +58,16 @@ void	cprinter(t_print *print, t_parg *parg, char c)
 	char	*width;
 	int		adj;
 
-	if ((adj = ft_abs(parg->fwidth) - 1) > 0)
+	if ((adj = ft_abs(parg->fwid) - 1) > 0)
 	{
 		width = ft_calloc(adj + 1, sizeof(char));
 		memset(width, ' ', adj);
-		if (parg->fminus || parg->fwidth < 0)
+		if (parg->fminus || parg->fwid < 0)
 		{
 			ft_putchar_fd(c, 1);
 			printer(width, adj);
 		}
-		else if (parg->fwidth)
+		else if (parg->fwid)
 		{
 			printer(width, adj);
 			ft_putchar_fd(c, 1);
@@ -87,16 +87,16 @@ void	sprinter(t_print *print, t_parg *parg)
 	char	*width;
 	int		adj;
 
-	if ((adj = ft_abs(parg->fwidth) - ft_strlen(parg->conv)) > 0)
+	if ((adj = ft_abs(parg->fwid) - ft_strlen(parg->conv)) > 0)
 	{
 		width = ft_calloc(adj + 1, sizeof(char));
 		memset(width, ' ', adj);
-		if (parg->fminus || parg->fwidth < 0)
+		if (parg->fminus || parg->fwid < 0)
 		{
 			ft_putstr_fd(parg->conv, 1);
 			printer(width, adj);
 		}
-		else if (parg->fwidth)
+		else if (parg->fwid)
 		{
 			printer(width, adj);
 			ft_putstr_fd(parg->conv, 1);

@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   pf_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 11:36:40 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/19 11:52:42 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 11:31:28 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		c_count(const char *str)
+int			c_count(const char *str)
 {
 	int i;
 	int c;
 
 	i = 0;
 	c = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == '%')
 		{
@@ -55,7 +55,7 @@ static void	free_parg(int ccount, t_parg **parg)
 	free(parg);
 }
 
-void	pf_free_all(t_print *print, t_parg **parg)
+void		pf_free_all(t_print *print, t_parg **parg)
 {
 	free_parg(print->nb_conv, parg);
 	free_print(print);

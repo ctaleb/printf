@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ltoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 11:43:48 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/11/26 14:59:59 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 13:04:45 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static unsigned int	ft_nbrlen(long long nb)
 {
-	unsigned int size;
+	unsigned int	size;
 
 	size = 0;
 	if (nb == 0)
@@ -36,7 +36,7 @@ char				*ft_ltoa(long long n)
 {
 	unsigned int	size;
 	char			*nbr;
-	long long nb;
+	long long		nb;
 
 	size = ft_nbrlen(n);
 	if (!(nbr = ft_calloc(size + 1, sizeof(char))))
