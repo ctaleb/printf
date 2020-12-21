@@ -6,7 +6,7 @@
 /*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 11:38:38 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/21 11:39:50 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 16:25:54 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ typedef struct		s_parg
 	int				ml;
 }					t_parg;
 
-int					ft_printf(const char *toprint, ...);
+int					ft_printf(const char *toprint,
+					...) __attribute__((format(printf,1,2)));
 t_print				*print_init(const char *str);
 t_parg				**parg_init(int ccount);
 

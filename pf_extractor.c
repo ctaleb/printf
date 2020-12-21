@@ -6,7 +6,7 @@
 /*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 18:48:43 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/21 15:12:06 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 16:39:36 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ long long			idextract(t_parg *parg, va_list args)
 {
 	long long	nb;
 
-	nb = 0;
 	if (parg->mh == 1)
 		nb = (short)va_arg(args, int);
 	else if (parg->mh >= 2)
@@ -34,7 +33,6 @@ unsigned long long	uxtract(t_parg *parg, va_list args)
 {
 	unsigned long long	nb;
 
-	nb = 0;
 	if (parg->mh == 1)
 		nb = (unsigned short)va_arg(args, int);
 	else if (parg->mh >= 2)
