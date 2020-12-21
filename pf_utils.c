@@ -6,7 +6,7 @@
 /*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 11:36:40 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/21 11:31:28 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 17:47:57 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,16 @@ int			c_count(const char *str)
 		i++;
 	}
 	return (c);
+}
+
+char		chrfiller(t_parg *parg)
+{
+	char	fc;
+
+	fc = ' ';
+	if (parg->fzero && parg->fwid >= 0)
+		fc = '0';
+	return (fc);
 }
 
 static void	free_print(t_print *print)

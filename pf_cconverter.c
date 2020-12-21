@@ -6,7 +6,7 @@
 /*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 11:31:25 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/21 16:37:07 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 17:47:04 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ void	perconv(t_print *print, t_parg *parg)
 void	cconv(t_print *print, t_parg *parg, va_list args)
 {
 	char	c;
+	char	fc;
 
 	c = (char)va_arg(args, int);
-	cprinter(print, parg, c);
+	cprinter(print, parg, c, chrfiller(parg));
 }
 
 void	sconv(t_print *print, t_parg *parg, va_list args)

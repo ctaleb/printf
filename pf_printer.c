@@ -6,7 +6,7 @@
 /*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 11:35:58 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/21 11:35:57 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 17:38:22 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	perprinter(t_print *print, t_parg *parg, char c, char cw)
 	}
 }
 
-void	cprinter(t_print *print, t_parg *parg, char c)
+void	cprinter(t_print *print, t_parg *parg, char c, char fc)
 {
 	char	*width;
 	int		adj;
@@ -61,7 +61,7 @@ void	cprinter(t_print *print, t_parg *parg, char c)
 	if ((adj = ft_abs(parg->fwid) - 1) > 0)
 	{
 		width = ft_calloc(adj + 1, sizeof(char));
-		memset(width, ' ', adj);
+		memset(width, fc, adj);
 		if (parg->fminus || parg->fwid < 0)
 		{
 			ft_putchar_fd(c, 1);

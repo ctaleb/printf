@@ -6,7 +6,7 @@
 /*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 12:04:27 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/21 16:53:34 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 17:48:21 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	conv_extract(const char *str, t_parg *parg, va_list args)
 	return (i);
 }
 
-static void	conv_varg(t_print *print, t_parg *parg, va_list args)
+static void	conv_varg(t_print *print, t_parg *parg, va_list args, int i)
 {
 	if (parg->ctype == 'c')
 		cconv(print, parg, args);
@@ -56,7 +56,12 @@ static void	conv_varg(t_print *print, t_parg *parg, va_list args)
 	else if (parg->ctype == '%')
 		perconv(print, parg);
 	else
-		return ;
+	{
+		if (print->basestr[i])
+			cprinter(print, parg, print->basestr[i], chrfiller(parg));
+		else
+			cprinter(print, parg, '\0', chrfiller(parg));
+	}
 }
 
 int			parser(t_print *print, t_parg **parg, va_list args)
@@ -71,7 +76,7 @@ int			parser(t_print *print, t_parg **parg, va_list args)
 		if (print->basestr[i] == '%')
 		{
 			i += conv_extract(&print->basestr[i], parg[j], args);
-			conv_varg(print, parg[j], args);
+			conv_varg(print, parg[j], args, i);
 			j++;
 		}
 		else

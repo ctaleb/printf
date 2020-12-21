@@ -6,7 +6,7 @@
 /*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 11:38:38 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/21 16:25:54 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 17:47:45 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,10 @@ void				njoiner(char **s1, char *s2);
 
 void				printer(char *str, int len);
 void				perprinter(t_print *print, t_parg *parg, char c, char cw);
-void				cprinter(t_print *print, t_parg *parg, char c);
+void				cprinter(t_print *print, t_parg *parg, char c, char fc);
 void				sprinter(t_print *print, t_parg *parg);
 
 void				pf_free_all(t_print *print, t_parg **parg);
+char				chrfiller(t_parg *parg);
 
 #endif
