@@ -6,7 +6,7 @@
 /*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 12:04:27 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/21 16:21:17 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 16:53:34 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ static int	conv_extract(const char *str, t_parg *parg, va_list args)
 	}
 	while (ismod(str[i]))
 		massign(str[i++], parg);
-	while (str[i] && !isconv(str[i]))
-		i++;
-	parg->ctype = str[i];
+	if (str[i] && isconv(str[i]))
+		parg->ctype = str[i];
 	return (i);
 }
 
