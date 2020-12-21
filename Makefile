@@ -6,7 +6,7 @@
 #    By: ctaleb <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/19 11:40:32 by ctaleb            #+#    #+#              #
-#    Updated: 2020/12/19 11:41:31 by ctaleb           ###   ########lyon.fr    #
+#    Updated: 2020/12/21 10:57:57 by ctaleb           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ $(NAME): $(OBJS) $(LIB_PATH)$(LIB)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 	@printf "                 $(GREEN)[lib done]$(DEFAULT)                     \n\n"
 
-bonus:
+bonus: all
 
 $(LIB_PATH)$(LIB):
 	@make -C $(LIB_PATH)
