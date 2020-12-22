@@ -6,13 +6,12 @@
 #    By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/19 11:40:32 by ctaleb            #+#    #+#              #
-#    Updated: 2020/12/22 10:42:36 by ctaleb           ###   ########lyon.fr    #
+#    Updated: 2020/12/22 12:37:44 by ctaleb           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra
-# -Werror
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 AR = ar
@@ -60,7 +59,7 @@ all: project $(NAME)
 $(NAME): $(OBJS) $(LIB_PATH)$(LIB)
 	@printf "$(MAGENTA)"
 	cp $(LIB_PATH)$(LIB) $(NAME)
-	@printf "$(DEFAULT)************** $(CYAN)making $(NAME)$(DEFAULT) **************\n"
+	@printf "$(DEFAULT)*********** $(CYAN)making $(NAME)$(DEFAULT) ***********\n"
 	@printf "$(ORANGE)"
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 	@printf "                 $(GREEN)[lib done]$(DEFAULT)                     \n\n"
