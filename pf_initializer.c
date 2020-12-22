@@ -6,7 +6,7 @@
 /*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 11:57:16 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/21 11:24:26 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/22 14:42:49 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ t_print			*print_init(const char *str)
 	t_print	*p_print;
 
 	p_print = &print;
-	p_print = ft_calloc(1, sizeof(t_print));
+	if (!(p_print = ft_calloc(1, sizeof(t_print))))
+		return (NULL);
 	p_print->nb_conv = c_count(str);
 	p_print->basestr = ft_strdup(str);
 	return (p_print);
@@ -31,11 +32,13 @@ t_parg			**parg_init(int ccount)
 	t_parg	**p_parg;
 
 	p_parg = &parg;
-	p_parg = ft_calloc(ccount, sizeof(t_parg));
+	if (!(p_parg = ft_calloc(ccount, sizeof(t_parg))))
+		return (NULL);
 	i = 0;
 	while (i < ccount)
 	{
-		p_parg[i] = ft_calloc(1, sizeof(t_parg));
+		if (!(p_parg[i] = ft_calloc(1, sizeof(t_parg))))
+			return (NULL);
 		p_parg[i]->conv = NULL;
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 11:43:48 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/21 13:04:45 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/22 14:06:21 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,32 @@ static unsigned int	ft_nbrlen(long long nb)
 	return (size);
 }
 
+static char			*ft_maxcase(void)
+{
+	char	*nbr;
+	char	*str;
+	int		i;
+
+	if (!(nbr = ft_calloc(21, sizeof(char))))
+		return (NULL);
+	str = "-9223372036854775808";
+	i = 0;
+	while (i < 21)
+	{
+		nbr[i] = str[i];
+		i++;
+	}
+	return (nbr);
+}
+
 char				*ft_ltoa(long long n)
 {
-	unsigned int	size;
-	char			*nbr;
-	long long		nb;
+	unsigned int		size;
+	char				*nbr;
+	long long			nb;
 
+	if (9223372036854775808U == (unsigned long long)n)
+		return (ft_maxcase());
 	size = ft_nbrlen(n);
 	if (!(nbr = ft_calloc(size + 1, sizeof(char))))
 		return (NULL);

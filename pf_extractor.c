@@ -6,7 +6,7 @@
 /*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 18:48:43 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/22 12:46:13 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/22 13:27:26 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ long long			idextract(t_parg *parg, va_list args)
 	else if (parg->mh >= 2)
 		nb = (signed char)va_arg(args, int);
 	else if (parg->ml == 1)
-		nb = (long)va_arg(args, int);
+		nb = (long)va_arg(args, long int);
 	else if (parg->ml >= 2)
-		nb = (long long)va_arg(args, int);
+		nb = (long long)va_arg(args, long long int);
 	else
 		nb = (int)va_arg(args, int);
 	return (nb);
@@ -38,9 +38,9 @@ unsigned long long	uxtract(t_parg *parg, va_list args)
 	else if (parg->mh >= 2)
 		nb = (unsigned char)va_arg(args, int);
 	else if (parg->ml == 1)
-		nb = (unsigned long)va_arg(args, int);
+		nb = (unsigned long)va_arg(args, long int);
 	else if (parg->ml >= 2)
-		nb = (unsigned long long)va_arg(args, int);
+		nb = (unsigned long long)va_arg(args, long long int);
 	else
 		nb = (unsigned int)va_arg(args, int);
 	return (nb);

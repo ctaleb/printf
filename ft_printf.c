@@ -6,7 +6,7 @@
 /*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 11:19:37 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/21 11:18:56 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/22 14:46:57 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,14 @@ int			ft_printf(const char *toprint, ...)
 	t_parg			**parg;
 
 	print = print_init(toprint);
+	if (!print)
+		return (-1);
 	parg = parg_init(print->nb_conv);
+	if (!parg)
+	{
+		pf_free_all(print, parg);
+		return (-1);
+	}
 	va_start(args, toprint);
 	parser(print, parg, args);
 	len = print->len;
