@@ -6,7 +6,7 @@
 #    By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/19 11:40:32 by ctaleb            #+#    #+#              #
-#    Updated: 2020/12/21 12:45:21 by ctaleb           ###   ########lyon.fr    #
+#    Updated: 2020/12/22 10:42:36 by ctaleb           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,18 +22,18 @@ INCS_PATH = .
 LIB_PATH = libft/
 
 SRCS = ft_printf.c\
-			pf_initializer.c\
-			pf_utils.c\
-			pf_parser.c\
-			pf_cchecker.c\
 			pf_aassigner.c\
+			pf_adjuster.c\
+			pf_cchecker.c\
+			pf_cconverter.c\
 			pf_extractor.c\
 			pf_iconverter.c\
-			pf_cconverter.c\
-			pf_memconverter.c\
-			pf_adjuster.c\
+			pf_initializer.c\
 			pf_joiner.c\
+			pf_memconverter.c\
+			pf_parser.c\
 			pf_printer.c\
+			pf_utils.c\
 
 OBJS = $(SRCS:.c=.o)
 INCS = ft_printf.h

@@ -6,7 +6,7 @@
 /*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 11:32:37 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/21 11:30:48 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/22 11:26:40 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	nconv(int len, t_parg *parg, va_list args)
 	else
 	{
 		n = (int *)va_arg(args, int *);
-		*n = len;
+		(n == NULL) ? (len += 0) : (*n = len);
 	}
 }
 
@@ -37,22 +37,22 @@ void	nmodconv(int len, t_parg *parg, va_list args)
 	if (parg->mh == 1)
 	{
 		s = (short *)va_arg(args, int *);
-		*s = len;
+		(s == NULL) ? (len += 0) : (*s = len);
 	}
 	else if (parg->mh >= 2)
 	{
 		c = (signed char *)va_arg(args, int *);
-		*c = len;
+		(c == NULL) ? (len += 0) : (*c = len);
 	}
 	else if (parg->ml == 1)
 	{
 		l = (long *)va_arg(args, int *);
-		*l = len;
+		(l == NULL) ? (len += 0) : (*l = len);
 	}
 	else if (parg->ml >= 2)
 	{
 		ll = (long long *)va_arg(args, int *);
-		*ll = len;
+		(ll == NULL) ? (len += 0) : (*ll = len);
 	}
 }
 

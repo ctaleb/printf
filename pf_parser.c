@@ -6,7 +6,7 @@
 /*   By: ctaleb <ctaleb@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 12:04:27 by ctaleb            #+#    #+#             */
-/*   Updated: 2020/12/21 17:48:21 by ctaleb           ###   ########lyon.fr   */
+/*   Updated: 2020/12/22 11:57:42 by ctaleb           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ int			parser(t_print *print, t_parg **parg, va_list args)
 	j = 0;
 	while (print->basestr[i])
 	{
-		if (print->basestr[i] == '%')
+		if (print->basestr[i] == '%' && print->basestr[i + 1])
 		{
 			i += conv_extract(&print->basestr[i], parg[j], args);
 			conv_varg(print, parg[j], args, i);
 			j++;
 		}
-		else
+		else if (print->basestr[i] != '%')
 		{
 			ft_putchar_fd(print->basestr[i], 1);
 			print->len += 1;
